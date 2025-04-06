@@ -29,7 +29,10 @@
 
 ## 🎮 示例
 你可以在 `animations/` 目录下找到各种有趣的动效，比如：
-- 🌌 **磁性小球动画** ([MagneticBalls](./animations/MagneticBalls/index.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/pvoqOmQ)
+- **磁性小球动画** ([MagneticBalls](./animations/MagneticBalls/index.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/pvoqOmQ)
+
+你可以在 `components/` 目录下找到可复用的小组件，比如：
+- **模拟Dock组件** ([Dock](./components/Dock/HorizonDock.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/RNwOWPL)
 
 ## 📖 使用方式
 1. **克隆仓库**
@@ -38,7 +41,7 @@
    cd frontend-fun
    ```
 2. **直接运行**
-   进入 `animations/` 目录查看具体示例，你也可以点击codepen链接直接在线预览。
+   进入对应目录 (如`animations/`) 查看具体示例，你也可以点击codepen链接直接在线预览。
 
 <!-- ## 🤝 贡献指南
 欢迎大家一起来玩！如果你有好玩的前端小动效，欢迎提交 PR：
