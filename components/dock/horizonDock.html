@@ -1,0 +1,125 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dock</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-color: #fff; /* slate-900 */
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen">
+    <!-- Dock -->
+    <div
+      id="dock"
+      class="flex gap-4 px-8 py-4 bg-gray-100/50 justify-center items-center backdrop-filter backdrop-blur-md backdrop-grayscale border rounded-3xl"
+    ></div>
+
+    <script>
+      const dock = document.getElementById("dock");
+      const icons = [];
+
+      const baseSize = 50;
+      const maxScale = 2;
+      const range = 96;
+      const iconList = [
+        {
+          src: "https://img.icons8.com/?size=100&id=11116&format=png&color=000000",
+          alt: "spotify",
+        },
+        {
+          src: "https://img.icons8.com/?size=100&id=Q524h6svpboS&format=png&color=000000",
+          alt: "discord",
+        },
+        {
+          src: "https://img.icons8.com/?size=100&id=RhYNENh5cxlS&format=png&color=000000",
+          alt: "instagram",
+        },
+        {
+          src: "https://img.icons8.com/?size=100&id=GmXJpb87D1Wb&format=png&color=000000",
+          alt: "youtube",
+        },
+      ];
+
+      iconList.forEach((icon) => {
+        const img = document.createElement("img");
+        img.src = icon.src;
+        img.alt = icon.alt;
+        img.style.width = `${baseSize}px`;
+        img.style.height = `${baseSize}px`;
+        img.style.transformOrigin = "center";
+        img.style.cursor = "pointer";
+        dock.appendChild(img);
+        icons.push({
+          el: img,
+          centerX: 0,
+          currentScale: 1,
+        });
+      });
+
+      let rafId = null;
+      let mouseX = null;
+
+      function updateIconCenters() {
+        icons.forEach((icon) => {
+          const rect = icon.el.getBoundingClientRect();
+          icon.centerX = rect.left + rect.width / 2;
+        });
+      }
+
+      function animate() {
+        if (mouseX === null) return;
+
+        icons.forEach((icon) => {
+          const dist = Math.abs(mouseX - icon.centerX);
+          const scale =
+            dist < range ? 1 + (1 - dist / range) * (maxScale - 1) : 1;
+
+          if (Math.abs(scale - icon.currentScale) > 0.01) {
+            icon.currentScale = scale;
+
+            gsap.to(icon.el, {
+              width: `${baseSize * scale}px`,
+              scaleY: scale,
+              duration: 0.2,
+              ease: "power3.out",
+              overwrite: true,
+            });
+          }
+        });
+        
+        rafId = null;
+      }
+
+      dock.addEventListener("mousemove", (e) => {
+        if (rafId) return;
+
+        mouseX = e.clientX;
+        rafId = requestAnimationFrame(animate);
+      });
+
+      dock.addEventListener("mouseleave", () => {
+        mouseX = null;
+        icons.forEach((icon) => {
+          icon.currentScale = 1;
+          gsap.to(icon.el, {
+            width: `${baseSize}px`,
+            height: `${baseSize}px`,
+            scaleY: 1,
+            duration: 0.3,
+            ease: "power3.out",
+            overwrite: true,
+          });
+        });
+      });
+
+      window.addEventListener("load", updateIconCenters);
+      window.addEventListener("resize", updateIconCenters);
+    </script>
+  </body>
+</html>
