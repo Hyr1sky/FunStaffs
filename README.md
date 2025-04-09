@@ -29,7 +29,8 @@
 
 ## 🎮 示例
 你可以在 `animations/` 目录下找到各种有趣的动效，比如：
-- **磁性小球动画** ([MagneticBalls](./animations/MagneticBalls/index.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/pvoqOmQ)
+- **磁性小球动画** ([MagneticBalls](./animations/Background/MagneticBalls/index.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/pvoqOmQ)
+- **动态文字浮现** ([FlowWithSVGPath](./animations/Text/FlowWithSVGPath/index.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/ZYENqXx)
 
 你可以在 `components/` 目录下找到可复用的小组件，比如：
 - **模拟Dock组件** ([Dock](./components/Dock/HorizonDock.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/RNwOWPL)
