@@ -34,6 +34,7 @@
 
 你可以在 `components/` 目录下找到可复用的小组件，比如：
 - **模拟Dock组件** ([Dock](./components/Dock/HorizonDock.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/RNwOWPL)
+- **圆盘菜单栏** ([CircleMenu](./components/Menu/CircleMenu.html)) - Codepen[预览](https://codepen.io/Hyr1sky/pen/dPPqeLE)
 
 ## 📖 使用方式
 1. **克隆仓库**
